@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">WeatherApp</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section>
+        <div class="container">
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <div class="inner-container">
+                    <div class="citi-info">
+                        <label for="city">Enter the name of the city</label>
+                        <input type="text" id="city" name="city_name", placeholder="Enter city name">
+                    </div>
+        
+                    <button class="btn" type="submit">Get Data</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            {% if country_code and description and pressure and humidity and temp%}
+                <h3>Country_code: {{country_code}}</h3><br>
+                <h4>Description: {{description}}</h4><br>
+                <h4>Pressure: {{pressure}}</h4><br>
+                <h4>Humidity: {{humidity}}</h4><br>
+                <h4>Temp: {{temp}}</h4><br>
+            {% endif %}
+        </div>
+    </section>
+    
+</body>
+</html>
